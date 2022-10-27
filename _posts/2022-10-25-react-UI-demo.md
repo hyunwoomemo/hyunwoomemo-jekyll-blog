@@ -45,4 +45,6 @@ VIEW 만 처리
 
 `classnames` : 조건부 CSS classname 생성
 
-`memo` : react 성능 최적화
+`memo` : react 성능 최적화 
+> 모든 컴포넌트에 `memo`, 모든 이벤트 처리에 `useCallback`
+{: .prompt-tip}

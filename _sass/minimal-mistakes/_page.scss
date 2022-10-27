@@ -192,6 +192,40 @@ body {
   }
 
   /* blockquote citations */
+
+  blockquote{
+    p {
+      margin: 0 1rem;
+      font-weight: bold;
+
+    }
+    &[class^='prompt'] {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: smaller;
+
+      &.prompt-tip {
+        background-color: #e4fee9 ;
+        border: none;
+        position: relative;
+        font-style: normal;
+  
+        &:before {
+          content: '⭐';
+          font-size: smaller;
+/*           font-size: 1px; */
+          position: absolute;
+          color: #08b408;
+          left: 6px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+    }
+    }
+}
+
   blockquote + .small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
