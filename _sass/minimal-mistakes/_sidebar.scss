@@ -351,3 +351,23 @@
   }
 }
 
+/*
+   custom sidebar
+   ========================================================================== */
+
+   #category_tag_menu {
+
+    .nav__sub-title {
+      display: inline-block;
+      background-color: rgba(94, 94, 94,0.1);
+      padding: 5px 10px;
+      color: $info-color;
+      border-radius: 10px;
+    }
+
+    > li:nth-of-type(2) {
+      a {
+        letter-spacing: 1px;
+      }
+    }
+   }

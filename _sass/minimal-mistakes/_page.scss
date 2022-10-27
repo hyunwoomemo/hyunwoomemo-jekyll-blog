@@ -55,6 +55,12 @@ body {
     width: 100%;
     clear: both;
 
+    .page__meta {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    
+
     .page__content,
     .page__meta,
     .page__share {
@@ -110,10 +116,18 @@ body {
 		}
 	}
 
+  h1 {
+    color: #a4a40f;
+  }
+
+  h2 {
+    color: #d6d632;
+  }
+
   p,
   li,
   dl {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   /* paragraph indents */
@@ -129,6 +143,10 @@ body {
     }
   }
 
+/*   > p {
+    padding-left: 1rem;
+  } */
+
   a:not(.btn) {
     &:hover {
       text-decoration: underline;
@@ -142,9 +160,13 @@ body {
   :not(pre) > code {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
-    font-size: 0.8em;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    font-size: 0.9em;
     background: $code-background-color;
     border-radius: $border-radius;
+    color: #e57373;
+    font-weight: bold;
 
     &::before,
     &::after {
@@ -575,4 +597,18 @@ body {
       padding-right: 0;
     }
   }
+}
+
+details {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: beige;
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+img {
+  border-radius: 5 px;
 }
