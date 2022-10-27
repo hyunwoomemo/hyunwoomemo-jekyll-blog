@@ -1,0 +1,15 @@
+---
+title: "Layout"
+layout: archive
+permalink: categories/layout
+
+author_profile: true
+sidebar:
+  nav: "docs"
+sidebar_main: true
+---
+
+{% assign posts = site.categories.layout %}
+{% for post in posts %}
+  {% include archive-single2.html type=page.entries_layout %}
+{% endfor %}
