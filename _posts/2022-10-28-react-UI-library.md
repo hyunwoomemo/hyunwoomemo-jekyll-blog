@@ -12,15 +12,16 @@ toc_sticky: true
 
 ## FsLightbox
 
-```cmd
+```console
 yarn add fslightbox-react
 ```
 
 ## Aos
-```cmd
+```console
 yarn add aos
 ```
 
 ## Slider
-```cmd
+```console
 yarn add react-simple-slider
+```
