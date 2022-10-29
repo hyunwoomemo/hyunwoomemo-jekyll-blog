@@ -333,7 +333,7 @@ useEffect(() => {
 <summary>Clean Up 예시</summary>
 <div markdown='1'>
 
-# App.js
+**App.js**
 
 ```javascript
 import React, { useState, useEffect } from 'react';
@@ -354,7 +354,7 @@ const App = () => {
 export default App;
 ```
 
-# Timer.js
+**Timer.js**
 
 ```javascript
 
