@@ -171,6 +171,15 @@ export default MyState;
 </div>
 </details>
 
+> 만약 현재 state를 바탕으로 다음 state를 계산해내고 싶다면, 함수를 이용
+{: .prompt-warn}
+
+```javascript
+// setCounter(counter + 1);
+
+setCounter((current) => current + 1);
+```
+
 
 #### **b) useEffect**
 
