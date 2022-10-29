@@ -517,6 +517,40 @@ export default App;
 
 ---
 
+###### Ref가 굉장히 유용한 상황 예시
+변화는 감지해야하지만 그 변화가 렌더링을 발생시키면 안되는 어떤 값을 다룰 때 정말 편리하다
+
+<details>
+<summary>코드 보기</summary>
+<div markdown='1'>
+
+```javascript
+import React, { useState, useRef, useEffect } from 'react';
+
+function App() {
+  const [count, setCount] = useState(1);
+  const renderCount = useRef(1);
+
+  useEffect(() => {
+    renderCount.current = renderCount.current + 1;
+    console.log('렌더링 수:', renderCount.current);
+  })
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>올려</button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+</div>
+</details>
+
+
 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 처리해 준다.
 
 Vanilla Script에서 `document.getElementById(...)`나 `document.querySelector(...)`로 DOM 객체를 취득하는 과정을 React 스타일로 표현한 것으로 이해할 수 있다.
