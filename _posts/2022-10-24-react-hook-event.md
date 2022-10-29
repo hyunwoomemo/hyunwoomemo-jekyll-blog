@@ -61,22 +61,44 @@ toc_sticky: true
 
 #### **a) useState**
 
-`useState()` 함수를 import하고 사용하는 경우
+##### State : **`컴포넌트의 상태`**
+
+>useState는 state를 **간편하게 생성하고 업데이트** 해주는 기능을 제공
+{: .prompt-info}
 
 ```javascript
-import React, {useState} from 'react';
-const [상태변수, 변수에 대한 setter 함수] = useState(초기값);
+const [state, setState] = useState(초기값);
 ```
 
-`useState()` 함수를 import 하지 않고 직접 사용하는 경우.
+![image](https://user-images.githubusercontent.com/105469077/198813496-919ff037-0aca-48e2-be93-d475f7839407.png)
 
-```javascript
-const [상태변수, 변수에 대한 setter 함수] = React.useState(초기값);
-```
 - 가장 기본적인 Hook 함수
 - 함수형 컴포넌트에서 state값을 생성한다.
 - 하나의 useState 함수는 하나의 상태 값만 관리할 수 있다.
 - 컴포넌트에서 관리해야 할 상태가 여러 개라면 useState를 여러번 사용하면 된다.
+
+
+> 아래 코드처럼 useState의 `초기값으로 무거운 작업을 실행해야한다면 초기값에 콜백`을 넣어준다.
+> 그러면 최초의 화면에 렌더링 될 때만 무거운 작업 함수가 불려지게 된다.
+
+
+```javascript
+const heavyWork = () => {
+  return ( ... );
+};
+
+// 무거운 작업이 렌더링 될 때마다 실행
+const App = () => {
+  const [names, setNames] = useState(heavyWork());
+}
+
+// 무거운 작업이 맨 처음 화면에 렌더링 될 때만 실행
+const App = () => {
+  const [names, setNames] = useState(() => {
+    return heavyWork();
+  });
+}
+```
 
 <details>
 <summary>🔍 useState 예시</summary>
@@ -152,24 +174,38 @@ export default MyState;
 
 #### **b) useEffect**
 
+![image](https://user-images.githubusercontent.com/105469077/198814275-53367a1e-0f7d-41a0-bd77-a117e79b5aab.png)
+
+Mount, Update, Unmount 될 때 특정 작업을 실행시키고 싶다면 `useEffect`를 사용
+
 `useEffect`는 기본적으로 렌더링 직후마다 실행되며,
 두 번째 파라미터 배열에 무엇을 넣는지에 따라 실행되는 조건이 달라진다.
 
 > 클래스 컴포넌트의 **componentDidMount**와 **componentDidUpdate**를 합친 형태
 
-
-
-`렌더링 될 때마다 실행되는 함수 정의`
-
-최초 등장하거나 state값이 변경될 때 모두 실행 된다.
-
+`useEffect`는 기본적으로 인자로 콜백 함수를 받는다.
 
 ```javascript
-useEffect(() => {
-  ... 처리할 코드 ...
+useEffect(() => { 작업 ... })
+```
+
+##### useEffect의 **두가지 형태**
+
+1️⃣ 렌더릴 될 때마다 실행
+```javascript
+useEffecct(() => {
+  작업...
 });
 ```
 
+최초 등장하거나 state값이 변경될 때 모두 실행 된다.
+
+2️⃣ 화면에 첫 렌더링 될 때 실행 / value 값이 바뀔 때 실행
+```javascript
+useEffect(() => {
+  작업...
+}, [value]);
+```
 
 `업데이트시에는 생략되는 함수 정의`
 
@@ -187,26 +223,6 @@ useEffect(() => {
 useEffect(() => {
   ... 처리할 코드 ...
 }, [값이름]);
-```
-
-
-`컴포넌트가 언마운트(화면에서 사라짐) 될 때만 실행되도록 설정하기`
-
-클로저(리턴되는 함수)를 명시한다.
-
-```javascript
-useEffect(() => {
-  return function() {
-    ... 처리할 코드 ...
-  };
-}, [state값이름]);
-```
-```javascript
-useEffect(() => { 
-  return () => { // 화살표 함수로 변경
-    ... 처리할 코드 ...
-  };
-}, [state값이름]);
 ```
 
 <details>
@@ -297,12 +313,210 @@ export default MyEffect;
 </div>
 </details>
 
+##### Clean Up (정리)
+
+useEffect의 리턴값으로 함수를 넣어준다. (클로저를 명시)
+
+`컴포넌트가 언마운트(화면에서 사라짐) 될 때 혹은 다음 렌더링 시 불릴 useEffect가 실행되기 이전에 실행`
+
+```javascript
+useEffect(() => { 
+  // 구독...
+  return () => { 
+    // 구독 해지 ...
+  };
+}, []);
+```
+
+
+<details>
+<summary>Clean Up 예시</summary>
+<div markdown='1'>
+
+# App.js
+
+```javascript
+import React, { useState, useEffect } from 'react';
+import Timer from './component/Timer';
+
+
+const App = () => {
+  const [showTimer, setShowTimer] = useState(false);
+
+  return (
+    <div>
+      {showTimer && <Timer />}
+      <button onClick={() => setShowTimer(!showTimer)}>Toggle Timer</button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+# Timer.js
+
+```javascript
+
+import React, { useEffect } from 'react'
+
+const Timer = () => {
+
+  useEffect(() => {
+    const timer = setInterval(() => { // Timer 컴포넌트가 처음 화면에 그렸을 때 timer를 실행
+      console.log('타이머 돌아가는중...')
+    }, 1000);
+
+    return () => { // Timer 컴포넌트가 언마운트될 때 실행
+      clearInterval(timer);
+      console.log('타이머가 종료되었습니다.');
+    };
+  }, []);
+
+  return (
+    <div>
+      <span>타이머를 시작합니다. 콘솔을 보세요!</span>
+    </div>
+  )
+}
+
+export default Timer;
+```
+
+</div>
+</details>
+
 #### c) useContenxt
 거의 사용되지 않음.
 
 ### 3) 특정한 경우에 사용되는 기능들
 
 #### **a) useRef**
+
+![image](https://user-images.githubusercontent.com/105469077/198828228-2d2a537f-47b8-4e97-8118-a5f97d147d2c.png)
+
+ref Object는 수정이 가능하기 때문에 언제든지 변경 가능
+
+![image](https://user-images.githubusercontent.com/105469077/198828271-e47e5312-1182-429f-b58d-955a42889d1b.png)
+
+##### useRef가 유용한 대표적인 상황 2가지
+
+###### 1. 저장공간
+
+State의 변화 -> 렌더링 -> 컴포넌트 내부 변수들 초기화
+
+Ref의 변화 -> No 렌더링 -> 변수들의 값이 유지됨
+
+state 대신 `ref 사용시 불필요한 렌더링을 막을 수 있다.`
+
+state의 변화 -> 렌더링 -> 그래도 Ref의 값은 유지됨
+
+>그러므로 **변경 시 렌더링을 발생시키지 말아야하는 값을 다룰 때 편리**함
+{: .prompt-tip}
+
+<details>
+<summary>useRef와 useState의 차이(렌더링 유무)</summary>
+<div markdown='1'>
+
+```javascript
+import React, { useState, useRef } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+
+  console.log(countRef); // countRef.current
+
+  console.log('렌더링...');
+
+  const increaseCountState = () => {
+    setCount(count + 1);
+  };
+
+  const increaseCountRef = () => {
+    countRef.current = countRef.current + 1;
+    console.log('Ref: ', countRef.current);
+  }
+
+  return (
+    <div>
+      <p>State: {count}</p>
+      <p>Ref: {countRef.current}</p>
+      <button onClick={increaseCountState}>State 올려</button>
+      <button onClick={increaseCountRef}>Ref 올려</button>
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+</div>
+</details>
+
+---
+
+
+
+
+###### 2. DOM 요소에 접근
+
+![image](https://user-images.githubusercontent.com/105469077/198828672-184ed880-5701-4b71-9bdb-348b4a0ff143.png)
+
+대표적으로 input 요소를 클릭하지 않아도 focus를 주고 싶을 때 사용
+
+<details>
+<summary>변수와 ref의 차이점</summary>
+<div markdown='1'>
+
+```javascript
+import React, { useState, useRef } from 'react';
+
+function App() {
+  const [renderer, setRenderer] = useState(0);
+  const countRef = useRef(0);
+  let countVar = 0;
+
+  const doRendering = () => {
+    setRenderer(renderer + 1);
+  }
+
+  const increaseRef = () => {
+    countRef.current += 1;
+    console.log('ref:', countRef.current);
+  }
+
+  const increaseVar = () => {
+    countVar += 1;
+    console.log('Var:', countVar);
+  }
+
+  const printResult = () => {
+    console.log(`ref: ${countRef.current}, var: ${countVar}`);
+  }
+
+  return (
+    <div>
+      <p>Ref: {countRef.current}</p>
+      <p>Var: {countVar}</p>
+      <button onClick={doRendering}>렌더!</button>
+      <button onClick={increaseRef}>Ref 올려</button>
+      <button onClick={increaseVar}>Var 올려</button>
+      <button onClick={printResult}>Ref Var 값 출력</button>
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+</div>
+</details>
+
+---
+
 함수형 컴포넌트에서 ref를 쉽게 사용할 수 있도록 처리해 준다.
 
 Vanilla Script에서 `document.getElementById(...)`나 `document.querySelector(...)`로 DOM 객체를 취득하는 과정을 React 스타일로 표현한 것으로 이해할 수 있다.
