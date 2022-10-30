@@ -14,25 +14,31 @@ toc_sticky: true
 
 ```javascript
 
-const Btn = ({ text, changeValue }) => {
+const Btn = ({ text, fontSize }) => {
     return <button 
     onClick={changeValue}
+    style={{
+      fontSize,
+    }}
     >
     {text}
     </button>
   }
+  
+  // propTypes
+  Btn.propTypes = {
+    text: PropTypes.string,
+    fontSize: PropTypes.number,
+  }
+
   const App = () => {
     const [value, setValue] = React.useState("Save Changes");
-    const changeValue = () => setValue("Revert Changes");
     return (
       <div>
-        <Btn text={value} changeValue={changeValue}/>
-        <Btn text="Continue" />
+        <Btn text={value} fontSize={18}/>
+        <Btn text="Continue" fontSize={16}/>
       </div>
     );
   }
-
-  const root = document.querySelector('#root');
-  ReactDOM.render(<App />, root);
 
 ```
