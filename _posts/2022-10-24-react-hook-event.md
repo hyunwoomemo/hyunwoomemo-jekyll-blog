@@ -180,6 +180,7 @@ export default MyState;
 setCounter((current) => current + 1);
 ```
 
+---
 
 #### **b) useEffect**
 
