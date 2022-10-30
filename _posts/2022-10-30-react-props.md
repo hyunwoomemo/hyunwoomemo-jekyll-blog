@@ -26,8 +26,8 @@ const Btn = ({ text, fontSize }) => {
   
   // propTypes
   Btn.propTypes = {
-    text: PropTypes.string.isRequired,
-    fontSize: PropTypes.number, // 
+    text: PropTypes.string.isRequired, // 필수값 설정
+    fontSize: PropTypes.number, 
   }
 
   const App = () => {
