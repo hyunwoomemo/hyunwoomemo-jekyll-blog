@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "완전탐색 > 소수 찾기"
-categories: programers
+categories: Programmers
 tag: [codingtest]
 author_profile: true
 toc: true
