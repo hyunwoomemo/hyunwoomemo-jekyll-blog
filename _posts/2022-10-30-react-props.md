@@ -16,7 +16,6 @@ toc_sticky: true
 
 const Btn = ({ text, fontSize }) => {
     return <button 
-    onClick={changeValue}
     style={{
       fontSize,
     }}
