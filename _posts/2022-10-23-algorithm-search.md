@@ -124,3 +124,55 @@ bubbleSort([6,3,4,1,2,5]); // [1,2,3,4,5,6]
 거품 정렬은 최악의 종류의 정렬이다.
 
 다른 정렬 알고리즘은 배열의 이미 정렬된 부분을 활용하는데 비해 거품 정렬은 모든 가능한 짝을 비교
+
+---
+
+### 선택 정렬
+
+선택 정렬은 가장 작은 항목을 찾아서 해당 항목을 배열의 현 위치에 삽입하는 방식으로 동작. 
+
+선택 정렬 알고리즘은 거품 정렬 알고리즘보다 약간 더 낫다.
+
+#### 선택 정렬 알고리즘 구현
+
+```javascript
+
+function swap(array, index1, index2) {
+  let temp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temp;
+}
+
+function selectionSort(items) {
+  let len = items.length;
+  let min;
+  console.log(len);
+
+
+  for (let i = 0; i < len; i++) {
+    // 최소 항목을 현재 위치로 설정한다.
+    min = i;
+    // 더 적은 항목이 있는지 배열의 나머지를 확인한다.
+    for (j = i + 1; j < len; j++) {
+      if (items[j] < items[min]) {
+        min = j;
+      }
+
+      // 현재 위치가 최소 항목 위치가 아니라면 항목들을 교환한다.
+      if (i != min) {
+        swap(items, i, min);
+      }
+    }
+
+  }
+  return items;
+}
+
+selectionSort([6, 1, 23, 4, 2, 3]); // [1, 2, 3, 4, 6, 23];
+
+```
+
+##### 시간 복잡도: O(n <sup>2)
+##### 공간 복잡도: O(1)
+
+중첩 루프 때문에 선택 정렬의 시간 복잡도는 여전히 O(n <sup>2)

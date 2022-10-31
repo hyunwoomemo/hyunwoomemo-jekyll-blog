@@ -192,7 +192,8 @@ body {
     }
     &[class^='prompt'] {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
       padding: 1rem;
       border-radius: 5px;
       font-size: smaller;
@@ -650,8 +651,7 @@ body {
 }
 
 details {
-  background-color: rgba(0, 0, 0, 0.3);
-  color: beige;
+  background-color: rgba(0, 0, 0, 0.1);
   margin: 10px;
   padding: 5px 10px;
   border-radius: 10px;
