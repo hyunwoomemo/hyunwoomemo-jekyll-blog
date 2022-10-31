@@ -134,3 +134,12 @@ $(function() {
     }
   });
 });
+
+const sidebarBtn = document.querySelector('#sidebar-btn');
+sidebarBtn.addEventListener('click', e => {
+  sidebarBtn.classList.toggle('move');
+  const sideBar = document.querySelector('.sidebar');
+  sideBar.classList.toggle('move');
+  const page = document.querySelector('.page');
+  page.classList.toggle('widePage');
+})

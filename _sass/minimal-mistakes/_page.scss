@@ -36,6 +36,7 @@ body {
 }
 
 .page {
+
   @include breakpoint($large) {
     float: right;
     width: calc(100% - #{$right-sidebar-width-narrow});
@@ -190,6 +191,7 @@ body {
       margin: 0 1rem;
 
     }
+    
     &[class^='prompt'] {
       display: flex;
       flex-direction: column;
@@ -209,8 +211,17 @@ body {
         font-size: smaller;
       }
 
+      &.prompt-defi {
+        background-color: rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+
+        &:before {
+          content: '📝';
+        }
+      }
+
       &.prompt-tip {
-        background-color: #e4fee9 ;
+        background-color: rgba(77, 187, 95, 0.2) ;
   
         &:before {
           content: '💡';
@@ -218,7 +229,7 @@ body {
     }
 
       &.prompt-info {
-        background-color: #e1f5fe ;
+        background-color: rgba(7, 59, 104, 0.8) ;
   
         &:before {
           content: 'ℹ️';
@@ -226,7 +237,7 @@ body {
     }
 
       &.prompt-warn {
-        background-color: #fff3cd ;
+        background-color: rgba(90, 69, 3, 0.95) ;
   
         &:before {
           content: '❗';
@@ -234,7 +245,7 @@ body {
     }
 
       &.prompt-danger {
-        background-color: #fbe8ea ;
+        background-color: rgba(86, 28, 8, 0.8) ;
   
         &:before {
           content: '🚫';
@@ -661,4 +672,28 @@ details {
 
 img {
   border-radius: 5px;
+}
+
+.breadcrumbs {
+  position: relative;
+
+  #sidebar-btn {
+    background: none;
+    position: absolute;
+    color: #a9dde0;
+    border: none;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+
+    &:before {
+      content: 'open';
+    }
+
+    &.move {
+      &::before {
+        content: 'close';
+      }
+    }
+  }
 }

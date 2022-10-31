@@ -7,6 +7,7 @@
    ========================================================================== */
 
 .sidebar {
+  transition: .3s;
   @include clearfix();
   // @include breakpoint(max-width $large) {
   //   /* fix z-index order of follow links */
@@ -369,5 +370,13 @@
       a {
         letter-spacing: 1px;
       }
+    }
+   }
+
+   .sidebar {
+    transition: .5s;
+
+    &.move {
+      transform: translateX(-500px);
     }
    }
