@@ -2,7 +2,7 @@
 layout: single
 title: "랜덤 숫자 추출 방법 (범위 지정)"
 categories: inbox
-tag: [codeit]
+tag: [random]
 author_profile: true
 toc: true
 toc_label: "목록"
