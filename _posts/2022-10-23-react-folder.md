@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React 폴더구조"
-categories: react
+categories: inbox
 tag: [folder]
 author_profile: true
 toc: true

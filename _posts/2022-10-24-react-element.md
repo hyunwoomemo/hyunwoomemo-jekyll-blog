@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React로 element를 생성하는 법"
-categories: react
+categories: inbox
 tag: [JSX]
 author_profile: true
 toc: true

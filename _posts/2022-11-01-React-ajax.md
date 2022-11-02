@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React simple-ajax "
-categories: react
+categories: practice
 tag: [codeit]
 author_profile: true
 toc: true
