@@ -15,7 +15,7 @@
 minimal_mistakes_skin    : "dark" # "default", "aqua", "contrast", "air", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "ko"
+locale                   : "ko-KR"
 title                    : "Mementomori Technical Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
