@@ -12,44 +12,6 @@ toc_sticky: true
 
 # UI Demo
 
-## 지금까지 한 것 정리
-
-`React` => 화면 구성 기능만 제공
-
-UI 전용 `framework`
-
-VIEW 만 처리
-
-
-- #### 컴포넌트 구조. 구성 방법
-- #### SPA 구성 = 화면 분할, URL
-- #### JSX 문법
-- #### props -> 컴포넌트 속성
-  - datatype
-  - default Value
-- #### CSS 적용
-  - inline
-  - css 파일
-  - css 모듈 🔥
-  - scss 파일
-  - scss 모듈 🔥
-  - styledComponent 🔥
-- #### hook
-  - use~~~()
-  - event
-  - 함수형 컴포넌트 존재할 수 있는 이유
-
----
-
-새로운 패키지 & 모듈
-
-`classnames` : 조건부 CSS classname 생성
-
-`memo` : react 성능 최적화 
-> 모든 컴포넌트에 `memo`, 모든 이벤트 처리에 `useCallback`
-{: .prompt-tip}
-
-
 ## Thumbnail 이미지
 
 ![image](https://user-images.githubusercontent.com/85672236/198413779-8a4cbc88-2809-471a-a767-27aac53c3f69.png)

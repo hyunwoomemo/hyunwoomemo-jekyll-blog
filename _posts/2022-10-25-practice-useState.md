@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Practice [React-useState]"
+title: "React-useState"
 categories: practice
 classes: wide
 tag: [useState]

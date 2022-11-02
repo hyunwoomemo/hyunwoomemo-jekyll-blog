@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Practice [React-Hook]"
+title: "React-Hook"
 categories: practice
 classes: wide
 tag: [hook]
