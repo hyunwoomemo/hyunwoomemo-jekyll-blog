@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "react 클론코딩01"
-categories: react
+categories: practice
 tag: [clonecoding]
 author_profile: true
 toc: true
@@ -10,7 +10,7 @@ toc_icon: "bars"
 toc_sticky: true
 ---
 
-# 이현우 React(6)-Layout 연습문제
+# React-Layout 연습
 
 > 2022-10-21
 

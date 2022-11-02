@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React UI-library"
-categories: react
+categories: practice
 tag: [library]
 author_profile: true
 toc: true

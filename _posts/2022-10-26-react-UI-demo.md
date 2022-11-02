@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React UI-demo"
-categories: react
+categories: practice
 tag: [UI]
 author_profile: true
 toc: true
