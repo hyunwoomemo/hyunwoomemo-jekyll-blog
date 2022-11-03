@@ -1,6 +1,6 @@
 ---
 title: "REACT"
-layout: archive
+layout: collection
 permalink: categories/react
 
 author_profile: true
