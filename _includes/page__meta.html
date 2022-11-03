@@ -8,7 +8,7 @@
         {% assign date_format = site.date_format | default: "%Y년 %m월 %d일" %}
         {% if post.last_modified_at %} 
           <time datetime="{{ date | date_to_xmlschema }}">{{ post.last_modified_at | date: date_format }}</time>
-          {% else %}
+        {% else %}
           <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
         {% endif %}
 
@@ -19,8 +19,11 @@
         {% assign delta_ts2 = current_ts | minus: past_ts2 %}
         {% assign three_days_ts = 86400 | times: 3 %}
         <span class="new__contents">
-          {% if three_days_ts > delta_ts %}N {% endif %}
-          {% if three_days_ts > delta_ts2 %}Update{% endif %}
+          {% if three_days_ts > delta_ts2 %}
+            Update
+          {% elsif three_days_ts > delta_ts %}
+            N
+          {% endif %}
         </span>
       </span>
     {% endif %}
