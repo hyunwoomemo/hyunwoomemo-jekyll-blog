@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "react 클론코딩01"
+title: "React 클론코딩01"
 categories: practice
 tag: [clonecoding]
 author_profile: true
