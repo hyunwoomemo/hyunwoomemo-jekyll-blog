@@ -15,9 +15,9 @@
           {% if three_days_ts > delta_ts %}N {% endif %}
         </span>
       </span>
-      <div>
-        ⏰ last_modified_at : {{post.last_modified_at | date: '%d %b %Y'}}
-      </div>
+      <span>
+        ⏰ 수정일 : {{post.last_modified_at | date: '%Y년 %m월 %d일'}}
+      </span>
     {% endif %}
   
 
