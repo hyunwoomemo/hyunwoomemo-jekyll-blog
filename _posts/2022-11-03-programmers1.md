@@ -12,9 +12,10 @@ toc_sticky: true
 
 # 코딩테스트 연습 > 2020 카카오 인턴십 > 키패드 누르기
 
-## [카카오 인턴] 키패드 누르기 
+## [카카오 인턴] 키패드 누르기
 
 ### 문제 설명
+
 스마트폰 전화 키패드의 각 칸에 다음과 같이 숫자들이 적혀 있습니다.
 
 ![image](https://user-images.githubusercontent.com/105469077/199780820-0a12255d-d8ec-45f3-9180-7e53ad9d2133.png)
@@ -45,29 +46,25 @@ toc_sticky: true
 ### 풀이
 
 ```javascript
-
 function solution(numbers, hand) {
-  let answer = []; // 결과 제출을 위한 빈 배열
-  let table = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['*', 0, '#']];
-  let leftLoc = [3, 0]; // table에서 '*'의 위치
-  let rightLoc = [3, 2]; // table에서 '#'의 위치
+  let answer = [];
+  let leftLoc = [3, 0];
+  let rightLoc = [3, 2];
   let midleLoc;
   let leftArr = [1, 4, 7];
   let rightArr = [3, 6, 9];
+  let table = [[1, 2, 3], [4, 5, 6], [7, 8, 9], ['*', 0, '#']];
   let leftResult = 0;
   let rightResult = 0;
 
+  
   numbers.forEach((v, i, arr) => {
-    // numbers의 원소 v가 [1, 4, 7] 즉, leftArr에 포함된다면 
-    // answer 배열에 문자 'L'을 푸시하고 v의 위치를 leftLoc에 저장
     if (leftArr.includes(v)) {
       table.forEach((v1, i1, arr1) => {
         v1.indexOf(v) > -1 ? leftLoc = [i1, v1.indexOf(v)] : false;
       })
       answer.push('L');
     } else if (rightArr.includes(v)) {
-          // numbers의 원소 v가 [1, 4, 7] 즉, leftArr에 포함된다면 
-    // answer 배열에 문자 'L'을 푸시하고 v의 위치를 leftLoc에 저장
       table.forEach((v1, i1, arr1) => {
         v1.indexOf(v) > -1 ? rightLoc = [i1, v1.indexOf(v)] : false;
       })
@@ -109,4 +106,5 @@ function solution(numbers, hand) {
   return answer.join("");
 }
 
+solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], "right");
 ```

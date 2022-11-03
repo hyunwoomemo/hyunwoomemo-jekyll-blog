@@ -6,17 +6,24 @@
       <span class="page__meta-date">
         <i class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i>
         {% assign date_format = site.date_format | default: "%Y년 %m월 %d일" %}
-        <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
+        {% if post.last_modified_at %} 
+          <time datetime="{{ date | date_to_xmlschema }}">{{ post.last_modified_at | date: date_format }}</time>
+          {% else %}
+          <time datetime="{{ date | date_to_xmlschema }}">{{ date | date: date_format }}</time>
+        {% endif %}
+
         {% assign past_ts = post.date | date: '%s' | plus: 0 %}
+        {% assign past_ts2 = post.last_modified_at | date: '%s' | plus: 0 %}
         {% assign current_ts = site.time | date: '%s' | plus: 0 %}
         {% assign delta_ts = current_ts | minus: past_ts %}
+        {% assign delta_ts2 = current_ts | minus: past_ts2 %}
         {% assign three_days_ts = 86400 | times: 3 %}
         <span class="new__contents">
           {% if three_days_ts > delta_ts %}N {% endif %}
+          {% if three_days_ts > delta_ts2 %}N {% endif %}
         </span>
       </span>
       <span>
-        ⏰ 수정일 : {{post.last_modified_at | date: '%Y년 %m월 %d일'}}
       </span>
     {% endif %}
   
