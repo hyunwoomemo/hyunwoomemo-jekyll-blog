@@ -697,3 +697,15 @@ img {
     }
   }
 }
+
+.new__contents {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  font-size: 0.9em;
+  background: $code-background-color;
+  border-radius: $border-radius;
+  color: #e26161;
+  font-weight: bold;
+}
