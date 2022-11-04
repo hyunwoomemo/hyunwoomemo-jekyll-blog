@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React-axios-hooks"
-categories: parctice
+categories: practice
 tag: [axios]
 author_profile: true
 toc: true
