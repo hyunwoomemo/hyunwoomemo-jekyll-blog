@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "React-axios-hooks"
-categories: inbox
+categories: parcetice
 tag: [axios]
 author_profile: true
 toc: true
