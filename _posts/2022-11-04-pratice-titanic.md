@@ -15,6 +15,17 @@ last_modified_at: 2022-11-04
 
 ![image](https://user-images.githubusercontent.com/105469077/199882673-23170a9c-bc47-4d49-92d9-d2a7a7cf8526.png)
 
+**package.json 수정사항**
+
+```json
+
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "react-scripts start | json-server --watch backend/data.json --port 3001",
+  }
+
+```
+
 ## App.js
 
 ```javascript

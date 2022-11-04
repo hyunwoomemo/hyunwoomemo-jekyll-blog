@@ -14,10 +14,20 @@ last_modified_at: 2022-11-03
 # Simple-ajax
 
 ![image](https://user-images.githubusercontent.com/105469077/199888094-b93f6e3d-4ea3-4176-a995-e5b39a3945d3.png)
-{: .example-img}
 
 ![image](https://user-images.githubusercontent.com/105469077/199888128-c58db1bb-50ef-4c86-84d3-dd60c29d6b30.png)
-{: .example-img}
+
+**package.json 수정사항**
+
+```json
+
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "react-scripts start | json-server --watch backend/data.json --port 3001",
+  }
+
+
+```
 
 ## App.js
 
