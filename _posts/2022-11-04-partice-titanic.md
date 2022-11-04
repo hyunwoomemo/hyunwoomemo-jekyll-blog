@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "axios-hooks"
+title: "React-axios-hooks"
 categories: inbox
 tag: [axios]
 author_profile: true
