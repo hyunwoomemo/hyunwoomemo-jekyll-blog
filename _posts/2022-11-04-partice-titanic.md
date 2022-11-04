@@ -15,9 +15,6 @@ last_modified_at: 2022-11-04
 
 ![image](https://user-images.githubusercontent.com/105469077/199882673-23170a9c-bc47-4d49-92d9-d2a7a7cf8526.png)
 
-![React_App_—_Mozilla_Firefox_2022-11-04_12-48-53_AdobeExpress(1)](https://user-images.githubusercontent.com/105469077/199882352-3b142048-4fa5-461c-b2c8-c9521c809fb7.gif)
-
-
 ## App.js
 
 ```javascript

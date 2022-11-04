@@ -709,3 +709,13 @@ img {
   color: #e26161;
   font-weight: bold;
 }
+
+.example-img {
+  width: 50%;
+  filter: grayscale(0.8);
+
+  &:hover {
+    width: 100%;
+    filter: none;
+  }
+}
