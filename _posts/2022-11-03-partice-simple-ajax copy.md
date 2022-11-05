@@ -26,7 +26,6 @@ last_modified_at: 2022-11-03
     "start": "react-scripts start | json-server --watch backend/data.json --port 3001",
   }
 
-
 ```
 
 ## App.js

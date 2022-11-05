@@ -251,6 +251,14 @@ body {
           content: '🚫';
         }
     }
+
+      &.prompt-question {
+        background-color: rgba(86, 8, 86, 0.8) ;
+
+        &:before {
+          content: '❔';
+        }
+    }
     }
 }
 
