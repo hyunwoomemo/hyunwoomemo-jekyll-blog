@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "React-HandButton 클래스네임 적용
+title: "React-HandButton 클래스네임 적용"
 categories: practice
 tag: [className]
 author_profile: true
@@ -134,3 +134,4 @@ export default HandIcon;
 
 </div>
 </details>
+
