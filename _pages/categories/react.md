@@ -1,9 +1,9 @@
 ---
 title: "REACT"
-layout: collection
+layout: archive
 permalink: categories/react
 collection: categories/react
-entries_layout: grid
+# entries_layout: grid
 
 author_profile: true
 sidebar:
