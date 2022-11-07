@@ -16,3 +16,6 @@ Module not found: Error: You attempted to import ../pages/GradeAdd which falls o
 You can either move it inside src/, or add a symlink to it from project's node_modules/.
 
 ```
+
+> import 시 파일 경로를 잘못 적어서 발생한 오류 !!
+{: .prompt-danger}
