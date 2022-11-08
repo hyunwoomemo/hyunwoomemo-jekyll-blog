@@ -661,19 +661,3 @@ export default Table;
 
 </div>
 </details>
-
-<details>
-<summary>helpers</summary>
-<div markdown='1'>
-<br/>
-
-**CookieHelper.js**
-
-**ExceptionHelper.js**
-
-**RegexHelper.js**
-
-**UtilHelper.js**
-
-</div>
-</details>
