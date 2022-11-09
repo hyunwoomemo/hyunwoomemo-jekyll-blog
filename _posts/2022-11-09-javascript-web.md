@@ -8,6 +8,7 @@ toc: true
 toc_label: "목록"
 toc_icon: "bars"
 toc_sticky: true
+last_modified_at: 2022-11-10
 ---
 
 # #웹 기초 다지기
@@ -68,4 +69,58 @@ fetch('https://learn.codeit.kr/api/topics')
   });
 
 ```
+
+## POST request 보내기
+
+>[실습용 URL](https://learn.codeit.kr/api/members)
+{: .prompt-defi}
+
+**GET 리퀘스트**
+
+```javascript
+
+fetch('https://learn.codeit.kr/api/members')
+  .then((response) => response.text())
+  .then((result) => { console.log(result); });
+
+```
+
+**3번 직원의 정보 조회**
+
+```javascript
+
+fetch('https://learn.codeit.kr/api/members/3')
+  .then((response) => response.text())
+  .then((result) => { console.log(result); });
+
+```
+
+**새로운 직원 추가하기**
+
+```javascript
+
+const newMember = {
+  name: 'Jerry',
+  email: 'jerry@codeitmall.kr',
+  department: 'engineering',
+};
+
+fetch('https://learn.codeit.kr/api/members', {
+  method: 'POST',
+  body: JSON.stringify(newMember),
+})
+  .then((response) => response.text())
+  .then((result) => { console.log(result); });
+
+```
+
+fetch 함수의 두 번째 파라미터에 옵션을 추가한 객체를 `옵션 객체`라고 함
+
+옵션 추가하지 않으면 `기본값으로 GET request`를 보냄
+
+`stringify` 메소드는 자바스크립트 객체를 String타입의 JSON 데이터로 변환
+
+자바스크립트 객체 그 자체는 외부에 바로 전송할 수 없기 때문에 `String`타입의 `JSON 데이터`로 변환해줘야 한다.
+
+`stringify` 메소드는 `parse`메소드와 정반대의 기능을 함
 
