@@ -124,3 +124,27 @@ fetch 함수의 두 번째 파라미터에 옵션을 추가한 객체를 `옵션
 
 `stringify` 메소드는 `parse`메소드와 정반대의 기능을 함
 
+## PUT request, DELETE  request 보내기
+
+**PUT request**
+
+어떤 정보를 수정할 것인지 id값을 알아야함
+
+**2번 직원 정보 수정**
+
+```javascript
+
+const member = {
+  name: 'Alice',
+  email: 'alice@codeitmail.kr',
+  department: 'marketing',
+};
+
+fetch('https://learn.codeit.kr/api/members/2', {
+  method: 'PUT',
+  body: JSON.stringify(member),
+})
+  .then((response) => response.text())
+  .then((result) => { console.log(result); });
+
+```
