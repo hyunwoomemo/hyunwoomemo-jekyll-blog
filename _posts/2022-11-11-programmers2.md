@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "2020 카카오 인턴십 > 키패드 누르기"
+title: "코딩테스트 연습 > 코딩테스트 입문 > 옹알이"
 categories: Programmers
 tag: [codingtest]
 author_profile: true
