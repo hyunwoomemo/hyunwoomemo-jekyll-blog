@@ -308,6 +308,79 @@ export default Table;
 
 ```javascript
 
+import React, { memo } from 'react';
 
+const ErrorView = memo(({error}) => {
+  return (
+    <div>
+      <h1>Oops~!!! {error.code} Error.</h1>
+      <hr />
+      <p>{error.message}</p>
+    </div>
+  );
+});
+
+export default ErrorView;
+
+```
+
+# 6. BarChartView.js
+> 그래프를 표시하기 위한 컴포넌트
+{: .prompt-info}
+
+```javascript
+
+import React, { memo } from 'react';
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const BarChartView = memo(({ labels, dataset, legend}) => {
+  /** 그래프 옵션 */
+  const options = {
+    indexAxis: 'x',
+    responsive: true
+  };
+
+  /** chart에 표시될 데이터 (막대그래프용) */
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: legend,
+      backgroundColor: '#0066ff44',
+      borderColor: '#06f',
+      borderWidth: 1,
+      data: dataset,
+    }]
+  };
+
+  return ((labels && dataset) && <Bar data={data} options={options} />);
+});
+
+BarChartView.defaultProps = {
+  lables: [],
+  dataset: [],
+  legend: ''
+}
+
+export default BarChartView;
 
 ```
