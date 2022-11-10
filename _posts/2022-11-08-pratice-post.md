@@ -12,21 +12,6 @@ toc_sticky: true
 
 ## 실습과제
 
-앞으로 만들 가위바위보 게임을 간단히 JSX 버전으로 만들어 봅시다.
-
-우선 아래 HTML 코드를 JSX로 옮겨 볼 건데요,
-
-`root` 아이디를 가진 `div` 태그 바로 안에 `h1` , `button` 태그가 배치되도록 해주세요.
-
-```html
-<h1 id="title">가위바위보</h1>
-<button class="hand">가위</button>
-<button class="hand">바위</button>
-<button class="hand">보</button>
-```
-
-### 문제
-
 웹 개발을 할 때는 아래의 두 가지 작업을 매우 자주 수행하게 됩니다.
 
     자바스크립트 객체를 string 타입의 JSON 데이터로 변환하는 작업(리퀘스트를 보낼 때)
@@ -44,6 +29,8 @@ toc_sticky: true
 URL : ['https://learn.codeit.kr/api/members'](https://learn.codeit.kr/api/members)
 
 현재 코드잇 실행기에 있는 코드는 '새 직원 정보를 추가한 후에, 전체 직원 정보를 조회하는 코드'입니다. 전체 코드 중 비어있는 부분에 적절한 코드를 추가해서 완전히 동작하는 코드로 만들어보세요. 추가할 새 직원 정보는 여러분이 원하는 대로 설정하면 됩니다.
+
+### 문제
 
 ```javascript
 
