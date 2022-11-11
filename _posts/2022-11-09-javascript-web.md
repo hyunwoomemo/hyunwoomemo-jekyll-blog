@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "자바스크립트 웹 개발 기본기"
+title: "자바스크립트 Web API"
 categories: javascript
 tag: [fetch, url]
 author_profile: true
