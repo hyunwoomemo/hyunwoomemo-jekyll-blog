@@ -242,3 +242,38 @@ https://www.google.com/abc와 같이 존재하지 않는 URL에 접속하려고 
 ## Content-Type 헤더
 
 Content-Type 헤더는 현재 리퀘스트 또는 리스폰스의 바디에 들어 있는 `데이터가 어떤 타입`인지를 나타냅니다.
+
+Content-Type 헤더의 값은 '`주 타입(main type)/서브 타입(sub type)`'의 형식
+
+
+1. 주 타입이 text인 경우(텍스트)
+
+- 일반 텍스트 : text/plain
+- CSS 코드 : text/css
+- HTML 코드 : text/html
+- JavaScript 코드 : text/javascript ...
+
+2. 주 타입이 image인 경우(이미지)
+
+- image/bmp : bmp 이미지
+- image/gif : gif 이미지
+- image/png : png 이미지 ...
+
+3. 주 타입이 audio인 경우(오디오)
+
+- audio/mp4 : mp4 오디오
+- audio/ogg : ogg 오디오 ...
+
+4. 주 타입이 video인 경우(비디오)
+
+- video/mp4 : mp4 비디오
+- video/H264 : H264 비디오 ...
+
+
+5. 주 타입이 application인 경우
+
+- application/json : JSON 데이터
+- application/octet-stream : 확인되지 않은 바이너리 파일 ...
+
+>마지막으로 application/octet-stream이라고 하는 값도 보이는데요. '확인되지 않은 바이너리 파일'이라는 게 뭘까요? 일단 '바이너리 파일'이 뭔지를 알아야 할 것 같은데요. 컴퓨터에서는 모든 파일이 0과 1의 조합으로 이루어져 있다는 사실은 이미 아시죠? 하지만 이때 그 0과 1의 조합이 우리가 읽을 수 있는 텍스트로 변환 가능한 경우도 있고, 그렇지 않은 경우도 있습니다. 그렇지 않은 경우의 예로는 이미지 파일이나 비디오 파일 등이 있습니다. 이렇게 텍스트 파일 이외의 파일들을 보통 바이너리 파일(binary file)이라고 하는데요. 이 바이너리 파일들 중에서도 특정 확장자(.png, .mp4 등)의 포맷에 해당하지 않는 데이터들을 보통 이렇게 application/octet-stream으로 나타냅니다. 참고로 브라우저는 리스폰스의 Content-Type 헤더의 값으로 application/octet-stream이 쓰여 있으면 보통, 사용자에게 '다운로드 받으시겠습니까'와 같은 alert 창을 띄웁니다.
+{: .prompt-defi}
