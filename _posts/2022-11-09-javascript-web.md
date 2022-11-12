@@ -238,3 +238,7 @@ https://www.google.com/abc와 같이 존재하지 않는 URL에 접속하려고 
 
 </div>
 </details>
+
+## Content-Type 헤더
+
+Content-Type 헤더는 현재 리퀘스트 또는 리스폰스의 바디에 들어 있는 `데이터가 어떤 타입`인지를 나타냅니다.
