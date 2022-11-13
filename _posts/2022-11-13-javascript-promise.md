@@ -206,3 +206,24 @@ fetch('https://www.google.com')
 
 ## Promise Chanining
 
+프로미스 객체에 then 메소드를 연속적으로 붙이는 것을 프로미스 체이닝이라고 함
+
+---
+
+프로미스 객체의 then 메소드는 또 다른 프로미스 객체를 리턴
+
+이 새로운 프로미스 객체는 처음에는 pending 상태지만
+
+then 메소드 안의 콜백이 실행되고 어떤 값을 리턴한지에 따라서 그 상태가 달라짐
+
+만약 콜백에서 프로미스 객체를 리턴하면 앞으로 프로미스 객체가 갖게 될 상태와 결과를 그대로 따라서 갖게 됨
+
+![image](https://user-images.githubusercontent.com/105469077/201514398-c0b32caf-7df5-44a0-b16c-fa7c93a77501.png)
+
+![image](https://user-images.githubusercontent.com/105469077/201514441-03480738-4057-4d6c-882d-7207c8d188b4.png)
+
+![image](https://user-images.githubusercontent.com/105469077/201514448-b81acedd-58c9-491d-81e9-060586579299.png)
+
+하지만 프로미스 객체 이외의 값이라면 fulfilled 상태가 되고 해당 리턴값을 작업 성공 결과로 갖게 됨
+
+![image](https://user-images.githubusercontent.com/105469077/201514476-19ef8d26-8601-4837-a59a-af91139e6950.png)
