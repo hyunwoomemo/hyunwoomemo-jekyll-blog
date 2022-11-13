@@ -339,3 +339,26 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 >catch 메소드는 then 메소드를 변형한 것에 불과함!
 {: .prompt-defi}
+
+## catch 메소드는 마지막에 씁니다.
+
+```javascript
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.text())
+  .catch((error) => { console.log(error); })
+  .then((result) => {
+    console.log(result);
+    throw new Error('test');
+  });
+
+```
+
+마지막 then 메소드가 리턴한 프로미스 객체는 rejected 상태가 됩니다.
+
+이렇게 rejected 상태의 프로미스만 남고 딱히 어떤 처리를 해주지 않으면 웹 브라우저는 에러로 인식
+
+이런 문제를 해결하려면 
+
+> catch 메소드를 가장 아래로 내려야 함
+{: .prompt-tip}
