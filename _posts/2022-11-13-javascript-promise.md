@@ -336,3 +336,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
   .then((result) => { console.log(result); });
 
 ```
+
+>catch 메소드는 then 메소드를 변형한 것에 불과함!
+{: .prompt-defi}
