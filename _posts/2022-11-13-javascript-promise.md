@@ -273,3 +273,34 @@ fetch 함수로 리스폰스를 잘 받으면, response 객체의 **text 메소�
 ### 2. json 메소드
 
 fetch 함수로 리스폰스를 잘 받으면, response 객체의 **json 메소드**는, **fulfilled 상태**이면서, **리스폰스의 바디에 있는 JSON 데이터를 자바스크립트 객체로 Deserialize해서 생겨난 객체**를 '작업 성공 결과'로 가진 Promise 객체를 리턴합니다. 만약 리스폰스의 바디에 있는 내용이 JSON 타입이 아니라면 에러가 발생하고 Promise 객체는 rejected 상태가 되면서 그 '작업 실패 정보'를 갖게 됩니다.
+
+## Promise Chaining이 필요한 경우
+
+`비동기 작업을 순차적으로 처리하기 위해서 `
+
+```javascript
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.text())
+  .then((result) => {
+    const users = JSON.parse(result);
+    const { id } = users[0];
+    return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+  })
+  .then((response) => response.text())
+  .then((posts) => {
+    console.log(posts);
+  });
+
+```
+
+코드를 보면 전체 사용자 정보를 조회하기 위해서 Request를 보내고 Response가 올 때까지 기다립니다.
+그리고 Response가 오면 Response에 들어있는 사용자 정보 중에서 
+
+첫 번째 사용자의 id를 구해서 사용자가 작성한 글 목록을 조회해서 출력했습니다.
+
+```두 번째 작업인 글 목록을 조회하고 출력하는 작업은 첫 번째 작업이었던 전체 사용자 정보 조회가 먼저 잘 이루어져야 가능한 작업입니다.```
+
+첫 번째 작업이 이뤄지지 않았는데 두 번째 작업이 먼저 수행될 수는 없음
+
+이렇게 순차적으로 비동기 작업을 처리해야 할 때 프로미스 체이닝을 하면 됨
