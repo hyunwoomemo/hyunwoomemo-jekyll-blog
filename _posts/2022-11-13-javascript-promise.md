@@ -183,3 +183,26 @@ Promise 객체는 어떤 작업에 관한 `상태 정보`를 갖고 있는 객�
 > <br/>
 > 작업이 실패했다면 `rejected` 상태 - 작업 실패 정보를 추가적으로 가짐
 {: .prompt-tip}
+
+## fetch 함수를 사용한 코드, 다시 해석하기
+
+```javascript
+
+fetch('https://www.google.com')
+  .then((response) => response.text()) // fetch 함수가 리턴하는 객체의 then 메소드를 사용해서 콜백을 등록
+  .then((result) => { console.log(result); });
+
+```
+
+콜백을 등록하기 위해서 사용한다고 했던 이 then 메소드는 
+
+사실 promise 객체의 메소드로 promise 객체가 pending 상태에서 fulfilled 상태가 될 때 실행할 콜백을 등록하는 메소드
+
+그러니까 서버로부터 리스폰스가 오면 프로미스 객체가 fulfilled 상태가 되고 then 메소드로 등록해두었던 콜백이 실행
+
+여기서 잠깐 프로미스 객체가 fulfilled 상태가 될 때 프로미스 객체는 그 작업 성공 결과를 갖게 됨, 작업 성공 결과는 서버가 보내준 리스폰스
+
+프로미스 객체의 작업 성공 결과는 첫 번째 콜백의 파라미터로 넘어옴
+
+## Promise Chanining
+
