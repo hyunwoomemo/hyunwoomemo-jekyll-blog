@@ -374,3 +374,32 @@ fetch('https://jsonplaceholder.typicode.com/users')
   .catch((error) => { console.log(error); })
 
 ```
+
+## catch 메소드를 여러 개 쓰는 경우
+
+**만약 중간에 에러가 발생해도 catch 메소드가 그 대안을 뒤로 넘겨줄 수 있으면 catch 메소드를 중간에 써도 됨**
+
+```javascript
+
+fetch('https://friendbook.com/my/newsfeeds')
+  .then((response) => response.json()) // -- A
+  .then((result) => { // -- B
+    const feeds = result;
+    // 피드 데이터 가공...
+    return processedFeeds; 
+  })
+  .catch((error) => { // -- C
+    // 미리 저장해둔 일반 뉴스를 보여주기  
+    const storedGeneralNews = getStoredGeneralNews();
+    return storedGeneralNews;
+  })
+  .then((result) => { /* 화면에 표시 */ }) // -- D
+  .catch((error) => { /* 에러 로깅 */ }); // -- E
+
+```
+
+지금 **C줄에 있는 콜백**을 보세요. fetch 함수의 작업이 실패하면 C 줄의 콜백이 실행됩니다. 사실, 이 SNS 서비스의 웹 페이지에서는 사용자가 매번 뉴스피드를 볼 때마다, 나중에 오프라인 상태가 될 때를 대비해서 모든 사람이 공통으로 볼 수 있는, 텍스트로만 이루어진 최근 일반 뉴스 데이터를 갱신해서 웹 브라우저에 저장한다고 해봅시다. C줄의 콜백은 바로 이렇게 저장해둔 일반 뉴스 데이터를 그대로 가져오는 기능을 합니다. **이렇게 되면 인터넷이 안 되는 상황에서도 나만을 위한 최적화된 뉴스피드는 못 보지만 일반적인 세상 뉴스는 사용자가 볼 수 있게 되겠죠?**
+
+이렇게 Promise Chain 중에서 **비록 에러가 발생했다고 해도 만약 실패한 작업 대신 다른 방법을 통해서 작업을 정상적으로 끝마칠 수 있는 상황이라면 catch 메소드를 중간에 사용하기도 합니다.** 그러니까 Promise Chain 중에서 단 하나의 작업이라도 실패하면 전체 작업이 실패했다고 봐도 되는 경우에는 그냥 Promise Chain 마지막에만 catch 메소드를 써주면 되겠지만, 어떤 작업들은 에러가 발생하더라도 다른 방식으로 복구해서 살려낼 방법이 있다면 catch 메소드 안의 콜백에서 그런 복구 작업을 해주면 되는 겁니다. 지금 위 코드에서는 미리 저장해둔 일반 뉴스 데이터를 구해오는 `getStoredGeneralNews` 함수를 실행하는 것처럼요.
+
+catch 메소드를 Promise Chain의 마지막에 늘 써줘야 하는 것은 맞지만, 작업을 살릴 방법이 있다면 Promise Chain 중간에 catch 메소드를 써도 된다는 사실, 잘 기억해두세요.
