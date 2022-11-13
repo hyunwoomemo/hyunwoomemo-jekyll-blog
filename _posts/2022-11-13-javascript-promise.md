@@ -307,3 +307,32 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 ## rejected 상태가 되면 실행할 콜백
 
+![image](https://user-images.githubusercontent.com/105469077/201516788-99c4651f-055f-490a-8093-4680e0c7a03b.png)
+
+만약 프로미스 객체가 rejected 상태가 됐을 때 실행할 콜백을 설정하고 싶다면
+
+then 메소드의 `두 번째 파라미터`로 원하는 콜백을 넣어주면 됨
+
+## catch 메소드
+
+>catch 메소드 미사용
+{: .prompt-info}
+
+```javascript
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.text(), (error) => { console.log(error); })
+  .then((result) => { console.log(result); });
+
+```
+
+>catch 메소드 사용
+
+```javascript
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.text())
+  .catch((error) => { console.log(error); }) // .then(undefined, (error) => { console.log(error); }) 코드와 같은 의미
+  .then((result) => { console.log(result); });
+
+```
