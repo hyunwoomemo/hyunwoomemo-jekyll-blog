@@ -327,6 +327,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
 ```
 
 >catch 메소드 사용
+{: .prompt-info}
 
 ```javascript
 
