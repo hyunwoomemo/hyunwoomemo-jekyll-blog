@@ -362,3 +362,15 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 > catch 메소드를 가장 아래로 내려야 함
 {: .prompt-tip}
+
+```javascript
+
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then((response) => response.text())
+  .then((result) => {
+    console.log(result);
+    throw new Error('test');
+  });
+  .catch((error) => { console.log(error); })
+
+```
