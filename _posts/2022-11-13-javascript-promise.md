@@ -304,3 +304,6 @@ fetch('https://jsonplaceholder.typicode.com/users')
 첫 번째 작업이 이뤄지지 않았는데 두 번째 작업이 먼저 수행될 수는 없음
 
 이렇게 순차적으로 비동기 작업을 처리해야 할 때 프로미스 체이닝을 하면 됨
+
+## rejected 상태가 되면 실행할 콜백
+
