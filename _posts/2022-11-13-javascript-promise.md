@@ -493,6 +493,8 @@ fetch('https://first.com', (response) => {
 
 하지만 우리가 배웠던 대로 fetch 함수는 Promise 객체를 리턴하기 때문에
 
+```javascript
+
 fetch('https://first.com')
   .then((response) => {
     // Do Something 
@@ -507,6 +509,8 @@ fetch('https://first.com')
     return fetch('https://third.com');
   });
 
+```
+
 이런 식으로 Promise Chaining을 해서 좀 더 깔끔한 코드로 여러 비동기 작업을 순차적으로 처리할 수 있는데요. 
 이렇게 **Promise 객체를 사용하면 callback hell 문제를 해결할 수 있습니다.**
 
@@ -518,3 +522,4 @@ fetch('https://first.com')
 (2) 비동기 작업 처리에 관한 좀 더 세밀한 처리를 자바스크립트 문법 단에서 해결하기 위해 등장했고,
 
 그 유명한 자바스크립트의 2015년도 표준인 ES6(=ES2015)에 추가되었습니다.
+
