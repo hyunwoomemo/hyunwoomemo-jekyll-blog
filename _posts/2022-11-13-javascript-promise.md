@@ -146,3 +146,37 @@ fetch('https://www.google.com')
 fetch 함수는 콜백을 파라미터로 바로 전달받는 게 아니라, `fetch 함수가 리턴하는 어떤 객체의 then 메소드를 사용해서 콜백을 등록`하는데요.
 
 왜 fetch 함수만 사용하는 형식이 다른 걸까요? 그건 바로 fetch 함수는, 좀 더 새로운 방식으로 비동기 실행을 지원하는 자바스크립트 문법과 연관이 있기 때문입니다. 사실 `fetch 함수는 Promise 객체라는 것을 리턴하고, 이 Promise 객체는 비동기 실행을 지원하는 또 다른 종류의 문법에 해당`
+
+## fetch 함수는 Promise 객체를 리턴
+
+Promise 객체는 어떤 작업에 관한 `상태 정보`를 갖고 있는 객체
+
+크게 세 가지 중 하나의 상태를 가짐
+
+첫 번째는 작업이 진행 중임을 의미하는 `pending` 상태
+두 번째는 작업이 성공적으로 완료되었음을 의미하는 `fulfilled` 상태
+세 번째는 작업이 실패했음을 의미하는 `rejected` 상태
+
+![image](https://user-images.githubusercontent.com/105469077/201511240-56496355-185d-47b2-8339-84746dd0fa5e.png)
+
+작업이 성공해서 promise 객체가 fulfilled 상태가 되면 promise 객체는 그 작업의 성공 결과도 함께 갖게 됨
+
+![image](https://user-images.githubusercontent.com/105469077/201511282-1c5c77e1-c264-47cb-9b0b-d5b7f427227e.png)
+
+서버가 보내 준 리스폰스가 작업의 성공 결과에 해당
+
+인터넷이 끊기는 등의 이유로 인해서 promise 객체과 rejected 상태가 되면 작업의 실패 이유에 관한 정보를 갖게 됨
+
+### 정리
+
+> fetch 함수는 promise 객체를 리턴
+> <br/>
+> promise 객체는 어떤 작업에 관한 상태 정보를 갖고 있음
+> <br/>
+> promise는 작업의 상태에 따라서 그에 맞는 상태를 가짐
+> <br/>
+> 만약 작업이 진행 중이라면 `pending` 상태
+> <br/>
+> 작업이 성공적으로 완료되었다면 `fulfilled` 상태 - 작업의 성공 결과를 추가적으로 가짐
+> <br/>
+> 작업이 실패했다면 `rejected` 상태 - 작업 실패 정보를 추가적으로 가짐
