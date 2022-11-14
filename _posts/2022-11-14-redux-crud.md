@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Redux"
+title: "Redux-Crud"
 categories: practice
 tag: [redux, crud]
 author_profile: true
