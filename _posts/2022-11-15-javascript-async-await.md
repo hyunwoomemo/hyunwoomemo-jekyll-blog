@@ -86,3 +86,54 @@ async 함수 안의 코드가 실행되다가 await을 만나면, 일단 await �
 어느 경우든 그 이후로는, await 뒤에 있던 Promise 객체가 fulfilled 상태가 되기를 기다립니다. 
 
 그리고 기다리던 Promise 객체가 fulfilled 상태가 되면 await이 Promise 객체의 작업 성공 결과를 리턴하는 겁니다.
+
+## catch문과 finally문
+
+**에러나는 코드**
+
+```javascript
+
+async function fetchAndPrint() {
+  const response = await fetch('https://jsonplaceholder.typicode.commm/users'); // 접근할 수 없는 URL
+  const result = await response.text();
+  console.log(result);
+} 
+
+```
+
+**해결**
+
+```javascript
+
+async function fetchAndPrint() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.commm/users');
+    const result = await response.text();
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log('exit');
+  }
+} 
+
+```
+
+> async 함수는 항상 프로미스 객체를 리턴
+{: .prompt-tip}
+
+```javascript
+
+async function fetchAndPrint() {
+  return 3;
+}
+
+fetchAndPrint();
+
+```
+
+위 코드는 단순 3을 리턴하지 않는다.
+
+**실행 결과**
+
+![image](https://user-images.githubusercontent.com/105469077/201941282-e64e0b24-78f9-4c08-81ec-61a5347dd5fa.png)
