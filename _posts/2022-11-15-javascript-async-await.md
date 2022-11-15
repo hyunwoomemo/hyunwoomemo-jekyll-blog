@@ -137,3 +137,25 @@ fetchAndPrint();
 **실행 결과**
 
 ![image](https://user-images.githubusercontent.com/105469077/201941282-e64e0b24-78f9-4c08-81ec-61a5347dd5fa.png)
+
+## async 함수가 리턴하는 Promise 객체
+
+`async 함수`는 그 안에서 리턴하는 값에 따라 그에 맞는 `Promise 객체를 리턴`합니다. 
+
+### 1. 어떤 값을 리턴하는 경우
+
+(1) Promise 객체를 리턴하는 경우
+
+**해당 Promise 객체와 동일한 상태와 작업 성공 결과(또는 작업 실패 정보)를 가진 Promise 객체**를 리턴
+
+(2) Promise 객체 이외의 값을 리턴하는 경우
+
+Promise 객체 이외에 숫자나 문자열, 일반 객체 등을 리턴하는 경우에는, **fulfilled 상태이면서, 리턴된 값을 작업 성공 결과로 가진 Promise 객체를** 리턴
+
+### 2. 아무 값도 리턴하지 않는 경우
+
+이 경우에는 **fulfilled 상태이면서, undefined를 작업 성공 결과로 가진 Promise 객체**가 리턴
+
+### 3. async 함수 내부에서 에러가 발생했을 때
+
+async 함수 안에서 에러가 발생하면, **rejected 상태이면서, 해당 에러 객체를 작업 실패 정보로 가진 Promise 객체**가 리턴
