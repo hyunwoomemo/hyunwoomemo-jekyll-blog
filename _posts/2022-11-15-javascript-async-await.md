@@ -159,3 +159,105 @@ Promise 객체 이외에 숫자나 문자열, 일반 객체 등을 리턴하는 
 ### 3. async 함수 내부에서 에러가 발생했을 때
 
 async 함수 안에서 에러가 발생하면, **rejected 상태이면서, 해당 에러 객체를 작업 실패 정보로 가진 Promise 객체**가 리턴
+
+## async 함수 안의 async 함수
+
+```javascript
+
+const applyPrivacyRule = async function (users) {
+  const resultWithRuleApplied = users.map((user) => {
+    const keys = Object.keys(user);
+    const userWithoutPrivateInfo = {};
+    keys.forEach((key) => {
+      if (key !== 'address' && key !== 'phone') {
+        userWithoutPrivateInfo[key] = user[key];
+      }
+    });
+    return userWithoutPrivateInfo;
+  });
+
+  const p = new Promise((resolve, reject) => {
+    setTimeout(() => { resolve(resultWithRuleApplied); }, 2000);
+  });
+  return p
+};
+
+async function getUsers() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    console.log(response);
+    const result = await response.text();
+    console.log(result);
+    const users = JSON.parse(result);
+    console.log(users);
+    const resultWithPrivacyRuleApplied = await applyPrivacyRule(users);
+    console.log(resultWithPrivacyRuleApplied);
+    return resultWithPrivacyRuleApplied;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log('exit');
+  }
+}
+
+getUsers().then((result) => { console.log(result); });
+
+```
+
+## async 함수를 작성할 때 주의해야할 성능 문제(심화)
+
+```javascript
+
+async function getResponses(urls) {
+  for(const url of urls){
+    const response = await fetch(url);
+    console.log(await response.text());
+  }
+}
+
+```
+
+이 `getResponses` 함수는 urls라는 파라미터로, 여러 개의 URL들이 있는 배열을 받아서, 순서대로 각 URL에 리퀘스트를 보내고, 그 리스폰스의 내용을 출력하는 함수입니다. 
+
+그런데 이 코드는 하나의 문제점이 있습니다. 
+
+그건 바로 이전 URL에 리퀘스트를 보내고 리스폰스를 받아서 출력하고 나서야, 다음 URL에 대한 리퀘스트를 보낼 수 있다는 점입니다. 
+
+즉, 순차적인 작업 처리를 한다는 점인데요. 
+
+왜냐하면 이전 URL에 대해서 await 문이 붙은 Promise 객체가 fulfilled 상태가 될 때까지는 그 다음 URL에 대한 작업들이 시작될 수 없기 때문입니다.
+
+만약 순차적인 처리를 해야 하는 경우라면 이 코드를 사용하는 게 맞겠지만, 만약 모든 리스폰스의 내용이 잘 출력되기만 하면 되고, 그 순서는 상관없는 경우라면 어떨까요? 
+
+이 코드는 성능 관점에서 아쉬운 점이 있는 코드입니다.
+
+만약 리스폰스의 내용의 순서가 중요하지 않은 경우라면 현재 코드를 이렇게 바꿔볼 수 있는데요.
+
+```javascript
+
+async function fetchUrls(urls){
+  for(const url of urls){
+    (async () => { // 추가된 부분!
+      const response = await fetch(url);
+      console.log(await response.text());
+    })(); // 추가된 부분!
+  }
+}
+
+```
+
+지금 각 url에 리퀘스트를 보내고 리스폰스를 받는 코드를, 별도의 `즉시실행되는 async 함수`로 감싸줬는데요.
+
+이렇게 코드를 고치면 일단 각 URL에 대해서 fetch 함수를 실행해서 리퀘스트를 보내는 것을 순서대로 바로 실행해버립니다. 
+
+이전 코드처럼 이전 URL에 대한 리스폰스가 오기까지를 기다렸다가 다음 URL에 리퀘스트를 보내는 게 아니라요. 
+
+이렇게 코드를 쓰면 일단 모든 URL에 대한 리퀘스트를 쭉 보내버리고, 먼저 리스폰스가 오는 순서대로 그 내용이 출력되죠.
+
+리스폰스의 순서를 보장하지 않아도 되는 경우에는 이 코드가 훨씬 성능이 좋겠죠?
+
+async 함수 안에서는 무언가를 반복 처리하는 코드를 쓸 때 유의해야 합니다. 
+
+왜냐하면 의도치 않게 순차 처리를 수행하는 비효율적인 코드를 짜는 실수를 하게 되기 쉽기 때문이죠. 
+
+만약 순차적인 처리가 필요한 경우가 아니라면 방금 본 것처럼 각 작업을 다시 async 함수로 묶어주면 된다는 사실, 기억해두세요!
