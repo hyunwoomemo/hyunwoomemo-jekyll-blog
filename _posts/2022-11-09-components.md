@@ -224,7 +224,7 @@ const Spinner = memo(({loading,  width, height}) => {
       width={height}
       ariaLabel="blocks-loading"
       wrapperStyle={{
-        position: 'absolute',
+        position: 'fixed',
         zIndex: 9999,
         left: '50%',
         top: '50%',
