@@ -22,3 +22,23 @@ toc_sticky: true
 <a href="https://codesandbox.io/s/focused-rumple-7h5k7w?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit 7h5k7w" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <div id="root"></div>
+    <script>
+      const rootElement = document.getElementById("root");
+      const element = React.createElement("h1", { children: "Hello, world!" });
+      ReactDOM.render(element, rootElement);
+    </script>
+  </body>
+</html>
