@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "React Practice"
+title: "React 체크박스"
 categories: practice
 tag: [react]
 author_profile: true
