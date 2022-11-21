@@ -135,3 +135,9 @@ useEffect => render가 끝난 뒤
 update시 => useEffect clean up / useEffect
 
 - [ ] useState의 lazy initialize
+
+- [ ] Why useRef ?
+
+- [ ] htmlFor, defaultValue
+  
+- [ ] 0으로 시작하는 휴대폰 번호 입력 form 만들기 / valid 표시 
