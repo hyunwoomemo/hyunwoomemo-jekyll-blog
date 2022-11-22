@@ -134,10 +134,23 @@ export default App;
 useEffect => render가 끝난 뒤
 update시 => useEffect clean up / useEffect
 
-- [ ] useState의 lazy initialize
+- [X] useState의 lazy initialize
 
-- [ ] Why useRef ?
+- [X] Why useRef ? useRef / ref / current
 
-- [ ] htmlFor, defaultValue
+- [X] htmlFor, defaultValue
   
-- [ ] 0으로 시작하는 휴대폰 번호 입력 form 만들기 / valid 표시 
+- [X] 0으로 시작하는 휴대폰 번호 입력 form 만들기 / valid 표시 
+  
+- [ ] Error Boundary: catch error 해서 보여주기 / Fallback : error가 났을 때 보여줄 컴포넌트
+  
+- [ ] event.target.elements / console.dir(element)
+  
+- [ ] contriller / input의 value 직접 관리 
+ 
+- [ ] todo 리스트를 간단하게 만들고 done을 누르면 삭제 restore를 누르면 삭제한거 되살리기
+
+- [ ] onClick={() => handleDoneClick(todo)} / onClick={handleDoneClick(todo)} 와 다른 점 ?
+   : 파라미터가 필요할 때는 함수형식으로 전달, 뒤에 코드는 작동 안함 ?!
+
+- [ ] 상태 끌어올리기 / 형제 컴포넌트의 상태 궁금 / 필요하면 부모로 lifting up / Props drilling
