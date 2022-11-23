@@ -146,12 +146,13 @@ update시 => useEffect clean up / useEffect
   
 - [ ] event.target.elements / console.dir(element)
   
-- [ ] contriller / input의 value 직접 관리 
+- [ ] controller / input의 value 직접 관리 
  
 - [ ] todo 리스트를 간단하게 만들고 done을 누르면 삭제 restore를 누르면 삭제한거 되살리기
 
 - [ ] onClick={() => handleDoneClick(todo)} / onClick={handleDoneClick(todo)} 와 다른 점 ?
-   : 파라미터가 필요할 때는 함수형식으로 전달, 뒤에 코드는 작동 안함 ?!
+  
+: 파라미터가 필요할 때는 함수형식으로 전달, 뒤에 코드는 작동 안함 ?!
 
 - [ ] 상태 끌어올리기 / 형제 컴포넌트의 상태 궁금 / 필요하면 부모로 lifting up / Props drilling
   
