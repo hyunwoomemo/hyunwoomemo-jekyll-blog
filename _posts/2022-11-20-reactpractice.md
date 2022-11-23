@@ -154,3 +154,5 @@ update시 => useEffect clean up / useEffect
    : 파라미터가 필요할 때는 함수형식으로 전달, 뒤에 코드는 작동 안함 ?!
 
 - [ ] 상태 끌어올리기 / 형제 컴포넌트의 상태 궁금 / 필요하면 부모로 lifting up / Props drilling
+  
+- [ ] Caputre > target > Bubble 
