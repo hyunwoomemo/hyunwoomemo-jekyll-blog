@@ -157,3 +157,8 @@ update시 => useEffect clean up / useEffect
 - [ ] 상태 끌어올리기 / 형제 컴포넌트의 상태 궁금 / 필요하면 부모로 lifting up / Props drilling
   
 - [ ] Caputre > target > Bubble 
+  
+- [ ] 조건부 렌더링 
+
+- [ ] List / key(변경, 추가, 삭제를 도움)
+
