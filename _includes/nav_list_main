@@ -47,6 +47,13 @@
       </ul>
       <ul>
         {% for category in site.categories %}
+        {% if category[0] == "sql" %}
+        <li><a href="/categories/sql" class="">SQL ({{category[1].size}})</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      <ul>
+        {% for category in site.categories %}
         {% if category[0] == "practice" %}
         <li><a href="/categories/practice" class="">practice ({{category[1].size}})</a></li>
         {% endif %}
