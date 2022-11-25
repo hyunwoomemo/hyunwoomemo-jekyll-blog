@@ -162,3 +162,20 @@ update시 => useEffect clean up / useEffect
 
 - [ ] List / key(변경, 추가, 삭제를 도움)
 
+- [ ] propTypes ?
+
+- [ ] useState: 이전 값을 인자로 / 초기화 지연(함수)
+
+- [ ] useReducer: useState 대체 state / reducer / action
+
+- [ ] useRef: current 라는 상자. 내용의 변경은 알려주지 않음. 원하면 콜백 ref 사용
+
+- [ ] useEffect: 데이터 fetch / 구독 / Dom 수정
+ 
+- [ ] clean up : 구독과 구독해지를 한 공간에서
+
+- [ ] composition : 리액트는 상속 x  composition(합성) o
+
+- [ ] composition2 : typeof / type check / 확장성 / 다양한 상황 품을 수 있도록
+
+ex) Dialog 컴포넌트를 만들고 ThankyouDialog, ByeDialog 등으로 활용 
